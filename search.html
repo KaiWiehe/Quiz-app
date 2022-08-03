@@ -8,15 +8,40 @@
     <title>Search</title>
 </head>
 
-<body>
-    <form onsubmit="search()">
-        <input type="text" required placeholder="Bitte Namen eingeben...">
-        <button>Absenden</button>
-    </form>
+<body onload="showNames()">
+
+    <input type="text" id="search" required onkeydown="filter()" placeholder="Bitte Namen eingeben...">
+    <ul id="list"></ul>
 
     <script>
-        function search() {
+        let names = ['Alex', 'Berta', 'Caro', 'Kai'];
 
+        function showNames() {
+
+            let list = document.getElementById('list');
+            list.innerHTML = ``;
+
+            for (let i = 0; i < names.length; i++) {
+                let name = names[i];
+                list.innerHTML += `
+                <li>${name}</li>`;
+            }
+        }
+
+        function filter() {
+            let search = document.getElementById('search').value;
+            search = search.toLowerCase();
+
+            let list = document.getElementById('list');
+            list.innerHTML = ``;
+
+            for (let i = 0; i < names.length; i++) {
+                let name = names[i];
+                if (name.toLowerCase().includes(search)) {
+                    list.innerHTML += `
+                <li>${name}</li>`;
+                }
+            }
         }
     </script>
 </body>
