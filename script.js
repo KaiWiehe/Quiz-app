@@ -80,6 +80,8 @@ let questions = [{
     },
 ];
 
+let score = 0; /* der punktestand startet bei 0 und wird bei jeder richtigen antwort um 1 erhöht */
+
 let currentQuestion = 0; /* Der anfangswert, damit er bei dem ersten json array inhalt anfängt */
 
 function init() {
@@ -103,12 +105,14 @@ function showQuestion() {
         question_titel.innerHTML = 'Ende!'
         answer_1.innerHTML = '';
         answer_2.innerHTML = 'Du hast es bis zum Ende geschafft';
-        answer_3.innerHTML = 'Dein Punktestand ist: '; /* TODO punktestand einfügen */
+        answer_3.innerHTML = `Du hast <b>${score}</b> von <b>${questions.length}</b> Fragen richtig beantwortet!`; /* TODO punktestand einfügen */
         answer_4.innerHTML = '';
 
         removeAllAnswerClasses();
 
         document.getElementById('next-button').parentNode.classList.add("hide"); /* löscht den ganzen unteren bereich wo der Button ist */
+
+        document.getElementById('img').src = "medal.png";
     } else {
         question_titel.innerHTML = question["question"]; /* fügt die aktuelle frage ein */
         answer_1.innerHTML = question["answer_1"];
@@ -126,8 +130,10 @@ function answer(answer) {
     if (answerNumber == question["right_answer"]) { /* Wenn ich die richtige antwort gedrückt habe passiert das... */
         console.log('Richtig!!!');
         document.getElementById(answer).parentNode.classList.add('bg-success'); /* Mit parentNode geht er auf das übergeordnete Element */
+        score++;
     } else { /* Wenn die antwort falsch war passiert das... */
         console.log('Falsche Antwort!!!');
+        removeOnClickAndHover();
         document.getElementById(answer).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
@@ -143,6 +149,8 @@ function nextQuestion() {
     current_question.innerHTML = currentQuestion + 1; /* Damit zeigt er die Aktuelle frage an */
 
     showQuestion(); /* Um die neue Frage zu laden */
+
+    addOnClickAndHover();
 }
 
 
@@ -161,3 +169,19 @@ function removeAllAnswerClasses() {
     answer_3.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
     answer_4.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
 }
+
+function removeOnClickAndHover() {
+    for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
+        document.getElementById(`answer_${i}`).parentNode.removeAttribute('onclick');
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('quiz-answer-card');
+    }
+}
+
+function addOnClickAndHover() { /* TODO funktuniert noch nicht, er fügt das onclick nicht wieder ein */
+    for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
+        /* document.getElementById(`answer_${i}`).parentNode.setAttribute('onclick', `answer(answer_${i})`); */
+        document.getElementById(`answer_${i}`).parentNode.classList.add('quiz-answer-card');
+    }
+}
+
+/* TODO Progress bar funktuniert noch nicht, ich muss die Klasse bei jeder frage ändern und das was im element steht */
