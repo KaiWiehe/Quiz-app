@@ -18,7 +18,7 @@
 </head>
 
 <body onload="init()">
-    <nav class="navbar bg-drak">
+    <nav class="navbar bg-drak height">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Kai's Quizapp</span>
         </div>
@@ -30,33 +30,33 @@
             <div class="card-body">
                 <h5 id="question_titel" class="card-title">Frage:</h5>
 
-                <div class="card quiz-answer-card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
                     <div class="card-body" id="answer_1">
                         Antwort 1
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_2')">
                     <div class="card-body" id="answer_2">
                         Antwort 2
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_3')">
                     <div class="card-body" id="answer_3">
                         Antwort 3
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2">
+                <div class="card quiz-answer-card mb-2" onclick="answer('answer_4')">
                     <div class="card-body" id="answer_4">
                         Antwort 4
                     </div>
                 </div>
 
                 <div class="questionFooter">
-                    <span><b>1</b> von <b id="question_lenght">5</b> Fragen</span>
-                    <button class="btn-primary btn">Nächste Frage</button>
+                    <span id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
+                    <button onclick="nextQuestion()" id="next-button" class="btn-primary btn" disabled>Nächste Frage</button>
                 </div>
             </div>
         </div>

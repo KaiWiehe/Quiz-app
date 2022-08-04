@@ -4,6 +4,10 @@ body {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+.height {
+    height: 100px;
+}
+
 .quiz-card {
     width: 30rem !important;
 }
@@ -18,7 +22,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 85vh;
+    min-height: calc(100vh - 100px);
 }
 
 .questionFooter {
@@ -31,5 +35,14 @@ body {
 
 .quiz-answer-card:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.bg-success,
+.bg-danger {
+    color: white;
+}
+
+.hide {
+    display: none;
 }

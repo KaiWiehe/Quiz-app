@@ -80,7 +80,7 @@ let questions = [{
     },
 ];
 
-let currentQuestion = 0;
+let currentQuestion = 0; /* Der anfangswert, damit er bei dem ersten json array inhalt anfängt */
 
 function init() {
     let question_lenght = document.getElementById('question_lenght');
@@ -91,15 +91,73 @@ function init() {
 
 function showQuestion() {
     let question = questions[currentQuestion];
-    let question_titel = document.getElementById('question_titel');
+
+    let question_titel = document.getElementById('question_titel'); /* Für die bessere lesbarkeit */
     let answer_1 = document.getElementById('answer_1');
     let answer_2 = document.getElementById('answer_2');
     let answer_3 = document.getElementById('answer_3');
     let answer_4 = document.getElementById('answer_4');
 
-    question_titel.innerHTML = `${question["question"]}`;
-    answer_1.innerHTML = `${question["answer_1"]}`;
-    answer_2.innerHTML = `${question["answer_2"]}`;
-    answer_3.innerHTML = `${question["answer_3"]}`;
-    answer_4.innerHTML = `${question["answer_4"]}`;
+    if (currentQuestion >= questions.length) {
+        /* Show endscreen */
+        question_titel.innerHTML = 'Ende!'
+        answer_1.innerHTML = '';
+        answer_2.innerHTML = 'Du hast es bis zum Ende geschafft';
+        answer_3.innerHTML = 'Dein Punktestand ist: '; /* TODO punktestand einfügen */
+        answer_4.innerHTML = '';
+
+        removeAllAnswerClasses();
+
+        document.getElementById('next-button').parentNode.classList.add("hide"); /* löscht den ganzen unteren bereich wo der Button ist */
+    } else {
+        question_titel.innerHTML = question["question"]; /* fügt die aktuelle frage ein */
+        answer_1.innerHTML = question["answer_1"];
+        answer_2.innerHTML = question["answer_2"];
+        answer_3.innerHTML = question["answer_3"];
+        answer_4.innerHTML = question["answer_4"];
+    }
+}
+
+function answer(answer) {
+    let question = questions[currentQuestion]; /* Damit die nachfolgende schreibweise leichter wird */
+    let answerNumber = answer.slice(-1); /* Damit nimmt er die letzte zahl, also aus 'answer_3' wird '3' */
+    let idOfRightAnswer = `answer_${question["right_answer"]}`; /* Könnte ich auch so reinschreiben, sieht aber so schöner aus */
+
+    if (answerNumber == question["right_answer"]) { /* Wenn ich die richtige antwort gedrückt habe passiert das... */
+        console.log('Richtig!!!');
+        document.getElementById(answer).parentNode.classList.add('bg-success'); /* Mit parentNode geht er auf das übergeordnete Element */
+    } else { /* Wenn die antwort falsch war passiert das... */
+        console.log('Falsche Antwort!!!');
+        document.getElementById(answer).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+    }
+    document.getElementById('next-button').disabled = false; /* damit wird der Button enabled */
+}
+
+function nextQuestion() {
+    currentQuestion++; /* von 0 auf 1 usw... */
+    resetColors();
+    document.getElementById('next-button').disabled = true; /* damit wird der Button wieder disabled */
+
+    let current_question = document.getElementById('current-question');
+    current_question.innerHTML = currentQuestion + 1; /* Damit zeigt er die Aktuelle frage an */
+
+    showQuestion(); /* Um die neue Frage zu laden */
+}
+
+
+/* Hilfsfunktionen */
+
+function resetColors() {
+    for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-success');
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-danger'); /* Damit die Farben wieder weg gehen */
+    }
+}
+
+function removeAllAnswerClasses() {
+    answer_1.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
+    answer_2.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
+    answer_3.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
+    answer_4.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
 }
