@@ -2,6 +2,7 @@ body {
     min-height: 100%;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.1);
+    user-select: none;
 }
 
 .height {
@@ -25,12 +26,13 @@ body {
     min-height: calc(100vh - 100px);
 }
 
-.questionFooter {
+#questionFooter {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid rgba(0, 0, 0, 0.4);
     padding-top: 12px;
+    width: 100%;
 }
 
 .quiz-answer-card:hover {
@@ -47,6 +49,11 @@ body {
     display: none;
 }
 
-.progress-bar-width {
-    width: 10%;
+.progress {
+    border-radius: 0;
+}
+
+#questionFooter2 {
+    display: flex;
+    justify-content: flex-end;
 }

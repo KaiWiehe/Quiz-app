@@ -88,6 +88,8 @@ function init() {
     let question_lenght = document.getElementById('question_lenght');
     question_lenght.innerHTML = questions.length;
 
+    /* document.getElementById('end-screen-button').classList.add('hide'); */
+
     showQuestion();
 }
 
@@ -110,10 +112,17 @@ function showQuestion() {
 
         removeAllAnswerClasses();
 
-        document.getElementById('next-button').parentNode.classList.add("hide"); /* löscht den ganzen unteren bereich wo der Button ist */
+        document.getElementById('next-button').parentNode.style.display = 'none'; /* löscht den ganzen unteren bereich wo der Button ist */
 
-        document.getElementById('img').src = "medal.png";
-    } else {
+        document.getElementById('questionFooter2').style = ''; /* fügt den button "neues spiel" ein */
+
+        document.getElementById('img').src = "medal.png"; /* ändert das bild im endscreen */
+
+        document.getElementById('progress-bar').parentNode.classList.add("hide"); /* lässt die progressbar verschwinden */
+    } else { /* Show next screen */
+        document.getElementById('progress-bar').innerHTML = `${calcPercent()}%`;
+        document.getElementById('progress-bar').style.width = `${calcPercent()}%`;
+
         question_titel.innerHTML = question["question"]; /* fügt die aktuelle frage ein */
         answer_1.innerHTML = question["answer_1"];
         answer_2.innerHTML = question["answer_2"];
@@ -128,16 +137,14 @@ function answer(answer) {
     let idOfRightAnswer = `answer_${question["right_answer"]}`; /* Könnte ich auch so reinschreiben, sieht aber so schöner aus */
 
     if (answerNumber == question["right_answer"]) { /* Wenn ich die richtige antwort gedrückt habe passiert das... */
-        console.log('Richtig!!!');
         document.getElementById(answer).parentNode.classList.add('bg-success'); /* Mit parentNode geht er auf das übergeordnete Element */
         score++;
     } else { /* Wenn die antwort falsch war passiert das... */
-        console.log('Falsche Antwort!!!');
-        removeOnClickAndHover();
         document.getElementById(answer).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
     document.getElementById('next-button').disabled = false; /* damit wird der Button enabled */
+    removeOnClickAndHover();
 }
 
 function nextQuestion() {
@@ -150,7 +157,22 @@ function nextQuestion() {
 
     showQuestion(); /* Um die neue Frage zu laden */
 
-    addOnClickAndHover();
+    if (currentQuestion < questions.length) {
+        addOnClickAndHover();
+    }
+}
+
+function nextGame() {
+    currentQuestion = 0; /* setzt den wert wieder auf den anfangswert */
+    score = 0; /* setzt den wert wieder auf den anfangswert */
+    document.getElementById('questionFooter2').style.display = 'none'; /* der end screen button verschwindet wieder */
+    document.getElementById('img').src = "quiz.jpg"; /* ändert das bild wieder zurück */
+    document.getElementById('progress-bar').parentNode.classList.remove("hide"); /* zeigt die progress bar wieder an */
+    document.getElementById('next-button').parentNode.style = ''; /* Zeigt den unteren bereich wieder an */
+    addAllAnswerClasses();
+    let current_question = document.getElementById('current-question');
+    current_question.innerHTML = currentQuestion + 1; /* Damit zeigt er die Aktuelle frage an */
+    showQuestion(); /*  */
 }
 
 
@@ -170,18 +192,31 @@ function removeAllAnswerClasses() {
     answer_4.parentNode.classList.remove("quiz-answer-card", "mb-2", "card");
 }
 
+function addAllAnswerClasses() {
+    answer_1.parentNode.classList.add("quiz-answer-card", "mb-2", "card");
+    answer_2.parentNode.classList.add("quiz-answer-card", "mb-2", "card");
+    answer_3.parentNode.classList.add("quiz-answer-card", "mb-2", "card");
+    answer_4.parentNode.classList.add("quiz-answer-card", "mb-2", "card");
+}
+
+function calcPercent() {
+    let percentcomma = (currentQuestion + 1) / questions.length;
+    let percent = percentcomma * 100;
+    return percent;
+}
+
+
+
 function removeOnClickAndHover() {
     for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
-        document.getElementById(`answer_${i}`).parentNode.removeAttribute('onclick');
-        document.getElementById(`answer_${i}`).parentNode.classList.remove('quiz-answer-card');
+        document.getElementById(`answer_${i}`).parentNode.removeAttribute('onclick'); /* löscht das onclick */
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('quiz-answer-card'); /* löscht den hover effekt */
     }
 }
 
 function addOnClickAndHover() { /* TODO funktuniert noch nicht, er fügt das onclick nicht wieder ein */
     for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
-        /* document.getElementById(`answer_${i}`).parentNode.setAttribute('onclick', `answer(answer_${i})`); */
+        document.getElementById(`answer_${i}`).parentNode.setAttribute('onclick', `answer('answer_${i}')`);
         document.getElementById(`answer_${i}`).parentNode.classList.add('quiz-answer-card');
     }
 }
-
-/* TODO Progress bar funktuniert noch nicht, ich muss die Klasse bei jeder frage ändern und das was im element steht */

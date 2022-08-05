@@ -29,10 +29,10 @@
             <img id="img" src="quiz.jpg" class="card-img-top">
 
             <div class="progress">
-                <div class="progress-bar progress-bar-width" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">10%</div>
+                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
 
-            <div class="card-body">
+            <div id="card-body" class="card-body">
                 <h5 id="question_titel" class="card-title">Frage:</h5>
 
                 <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
@@ -59,9 +59,14 @@
                     </div>
                 </div>
 
-                <div class="questionFooter">
-                    <span id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
-                    <button onclick="nextQuestion()" id="next-button" class="btn-primary btn" disabled>Nächste Frage</button>
+                <div id="questionFooterEndScreen">
+                    <div id="questionFooter">
+                        <span id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
+                        <button onclick="nextQuestion()" id="next-button" class="btn-primary btn" disabled>Nächste Frage</button>
+                    </div>
+                    <div id="questionFooter2" style="display: none">
+                        <button onclick="nextGame()" id="end-screen-button" class="btn-primary btn">Neues Spiel?</button>
+                    </div>
                 </div>
             </div>
         </div>
