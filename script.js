@@ -86,9 +86,7 @@ let audio_good = new Audio('good.mp3'); /* audio "Richtige Frage" */
 let audio_wrong = new Audio('wrong.mp3'); /* audio "Falsche Frage" */
 
 function init() {
-    let question_lenght = document.getElementById('question_lenght');
-    question_lenght.innerHTML = questions.length; /* Zeigt an wie viele Fragen es gibt */
-
+    showAmmountOfQuestions();
     showQuestion();
 }
 
@@ -264,4 +262,9 @@ function resetAll() {
     let current_question = document.getElementById('current-question');
     current_question.innerHTML = currentQuestion + 1; /* Damit zeigt er die Aktuelle frage an */
     addOnClickAndHover();
+}
+
+function showAmmountOfQuestions() {
+    let question_lenght = document.getElementById('question_lenght');
+    question_lenght.innerHTML = questions.length; /* Zeigt an wie viele Fragen es gibt */
 }
