@@ -2,7 +2,7 @@ let questions = [{
         "question": "Leonard und Penny küssen sich nach ihrem ersten Date im Flur: Was bemerkt Leonard an der Decke?",
         "answer_1": "Eine Überwachungskamera",
         "answer_2": "Sheldon hat eine Notiz aufgehängt",
-        "answer_3": "es hängt ein Mistelzweig über der Tür und deswegen küssen sie sich",
+        "answer_3": "Es hängt ein Mistelzweig über der Tür und deswegen küssen sie sich",
         "answer_4": "Die Lampe ist defekt",
         "right_answer": 1
     },
@@ -24,10 +24,10 @@ let questions = [{
     },
     {
         "question": "Wer heiratet zuerst?",
-        "answer_1": "Lennard & Penny",
-        "answer_2": "Raj & Burnadette",
+        "answer_1": "Leonard & Penny",
+        "answer_2": "Raj & Bernadette",
         "answer_3": "Sheldon & Amy",
-        "answer_4": "Howert & Burnadette",
+        "answer_4": "Howard & Bernadette",
         "right_answer": 4
     },
     {
@@ -43,13 +43,13 @@ let questions = [{
         "answer_1": "Katzentanzlied",
         "answer_2": "Kommt ein Vogel geflogen",
         "answer_3": "Hänsel und Gretel",
-        "answer_4": "Old Mcdonald had a farm",
+        "answer_4": "Old Macdonald Had a Farm",
         "right_answer": 1
     },
     {
         "question": "Wo im Appartement von Leonard und Sheldon befindet sich eine Kamera?",
         "answer_1": "In der Deckenlampe",
-        "answer_2": "In der Aquamen Figur",
+        "answer_2": "In der Aquaman Figur",
         "answer_3": "In der Küche",
         "answer_4": "Hinter einem Buch",
         "right_answer": 2
