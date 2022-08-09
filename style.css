@@ -9,6 +9,15 @@ body {
     height: 100px;
 }
 
+.navbar-brand {
+    transition: transform .2s;
+}
+
+.navbar-brand:hover {
+    cursor: pointer;
+    transform: scale(0.9);
+}
+
 .quiz-card {
     width: 30rem !important;
 }
@@ -19,7 +28,8 @@ body {
     font-size: 3rem;
 }
 
-.container {
+.container,
+.container-categorys {
     display: flex;
     align-items: center;
     justify-content: center;
