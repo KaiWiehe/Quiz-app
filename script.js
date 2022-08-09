@@ -3,6 +3,7 @@ let score = 0; /* der punktestand startet bei 0 und wird bei jeder richtigen ant
 let currentQuestion = 0; /* Der anfangswert, damit er bei dem ersten json array inhalt anfängt */
 let audio_good = new Audio('sounds/good.mp3'); /* audio "Richtige Frage" */
 let audio_wrong = new Audio('sounds/wrong.mp3'); /* audio "Falsche Frage" */
+let audio_winner = new Audio('sounds/winner.mp3'); /* audio "Ende" */
 
 function initQuestion(questionCategory) {
     changeContainer();
@@ -17,6 +18,7 @@ function showQuestion() {
     if (filterCategory.length == 1) {
         if (gameIsOver()) {
             showEndScreen();
+            audio_winner.play();
         } else {
             updateProgressBar();
             showNextQuestion();
@@ -50,6 +52,7 @@ function nextQuestion() {
 
 function nextGame() {
     resetAll();
+    resetColors();
     showQuestion(); /* Zeigt die erste frage wieder an */
 }
 
