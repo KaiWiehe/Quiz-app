@@ -11,7 +11,7 @@ function initQuestion(questionCategory) {
     filterCategory.push(category);
     showAmmountOfQuestions();
     showQuestion();
-    document.getElementById('question-container').style = `background: linear-gradient(rgba(255, 255, 255, 0.6), rgb(255, 255, 255)), url("${filterCategory[0][currentQuestion]['background']}");background-position: center;`;
+    document.getElementById('question-container').style = `background: linear-gradient(rgba(255, 255, 255, 0.6), rgb(255, 255, 255)), url("${filterCategory[0][currentQuestion]['background']}");background-position: center;background-size: 100%;background-repeat: no-repeat;`;
 }
 
 function changeCategory(questionCategory) {
@@ -209,4 +209,11 @@ function changeContainer() {
 function showAmmountOfQuestions() {
     let question_lenght = document.getElementById('question_lenght');
     question_lenght.innerHTML = filterCategory[0].length; /* Zeigt an wie viele Fragen es gibt */
+}
+
+function openMenu() {
+    document.getElementById('left').classList.add('show-left');
+    setTimeout(function() {
+        document.getElementById('left').classList.remove('show-left');
+    }, 3000);
 }

@@ -16,6 +16,7 @@
     <!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
  -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="database.js"></script>
     <script src="script.js"></script>
@@ -24,10 +25,11 @@
 <body>
     <div class="container-categorys">
         <!-- left -->
-        <div class="left">
+        <img class="menu-icon" src="img/menu.png" onclick="openMenu()">
+        <div id="left" class="left">
             <div onclick="nextGame()" class="flex flex-center flex-collum hover">
                 <img src="img/category.png">
-                <span class="margin10">Kai's Quiz</span>
+                <span class="header">Kai's Quiz</span>
             </div>
             <div>
                 <div class="category" onclick="changeCategory('bigBangTheory')">
