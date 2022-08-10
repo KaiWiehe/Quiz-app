@@ -11,7 +11,12 @@ function initQuestion(questionCategory) {
     filterCategory.push(category);
     showAmmountOfQuestions();
     showQuestion();
-    document.getElementById('img').src = filterCategory[0][currentQuestion]['background'];
+    document.getElementById('question-container').style = `background: linear-gradient(rgba(255, 255, 255, 0.6), rgb(255, 255, 255)), url("${filterCategory[0][currentQuestion]['background']}");background-position: center;`;
+}
+
+function changeCategory(questionCategory) {
+    nextGame();
+    initQuestion(questionCategory);
 }
 
 function showQuestion() {
@@ -20,7 +25,7 @@ function showQuestion() {
             showEndScreen();
             audio_winner.play();
         } else {
-            updateProgressBar();
+            /* updateProgressBar(); */
             showNextQuestion();
         }
     }
@@ -62,7 +67,7 @@ function nextGame() {
 function resetColors() {
     for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
         document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-success');
-        document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-danger'); /* Damit die Farben wieder weg gehen */
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('bg-wrong'); /* Damit die Farben wieder weg gehen */
     }
 }
 
@@ -91,29 +96,31 @@ function calcPercent() {
 function removeOnClickAndHover() {
     for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
         document.getElementById(`answer_${i}`).parentNode.removeAttribute('onclick'); /* löscht das onclick */
-        document.getElementById(`answer_${i}`).parentNode.classList.remove('quiz-answer-card'); /* löscht den hover effekt */
+        document.getElementById(`answer_${i}`).parentNode.classList.remove('question-hover'); /* löscht den hover effekt */
     }
 }
 
 function addOnClickAndHover() { /* TODO funktuniert noch nicht, er fügt das onclick nicht wieder ein */
     for (let i = 1; i <= 4; i++) { /* Damit er das 4 mal ausführt*/
         document.getElementById(`answer_${i}`).parentNode.setAttribute('onclick', `answer('answer_${i}')`);
-        document.getElementById(`answer_${i}`).parentNode.classList.add('quiz-answer-card');
+        document.getElementById(`answer_${i}`).parentNode.classList.add('question-hover');
     }
 }
 
 function showEndScreen() {
-    question_titel.innerHTML = 'Ende!'
+    question_titel.innerHTML = ''
     answer_1.innerHTML = '';
-    answer_2.innerHTML = 'Du hast es bis zum Ende geschafft!';
-    answer_3.innerHTML = `Du hast <b>${score}</b> von <b>${filterCategory[0].length}</b> Fragen richtig beantwortet!`;
-    answer_4.innerHTML = '';
+    answer_2.innerHTML = '<b class="end">Ende!</b>';
+    answer_3.innerHTML = 'Du hast es bis zum Ende geschafft!';
+    answer_4.innerHTML = `Du hast <b>${score}</b> von <b>${filterCategory[0].length}</b> Fragen richtig beantwortet!`;
 
     removeAllAnswerClasses();
     document.getElementById('questionFooter').style.display = 'none'; /* löscht den ganzen unteren bereich wo der Button ist */
     document.getElementById('questionFooter2').style = ''; /* fügt den button "neues spiel" ein */
-    document.getElementById('img').src = "img/medal.png"; /* ändert das bild im endscreen */
-    document.getElementById('progress-bar').parentNode.classList.add("hide"); /* lässt die progressbar verschwinden */
+    /* document.getElementById('img').src = "img/medal.png"; */
+    /* ändert das bild im endscreen */
+    /* document.getElementById('progress-bar').parentNode.classList.add("hide"); */
+    /* lässt die progressbar verschwinden */
 }
 
 function gameIsOver() {
@@ -151,16 +158,20 @@ function showBothColors(answer) {
     let question = filterCategory[0][currentQuestion]; /* für die bessere Lesbarkeit, Damit die nachfolgende schreibweise leichter wird */
     let idOfRightAnswer = `answer_${question["right_answer"]}`; /* Könnte ich auch so reinschreiben, sieht aber so schöner aus */
 
-    document.getElementById(answer).parentNode.classList.add('bg-danger');
+    document.getElementById(answer).parentNode.classList.add('bg-wrong');
     document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
 }
 
 function enableButton() {
     document.getElementById('next-button').disabled = false; /* damit wird der Button enabled */
+    document.getElementById('next-button').classList.remove('disabled'); /* löscht das disabled design */
+    document.getElementById('next-button').classList.add('button-hover'); /* fügt den hover effekt hinzu */
 }
 
 function disableButton() {
     document.getElementById('next-button').disabled = true; /* damit wird der Button wieder disabled */
+    document.getElementById('next-button').classList.add('disabled'); /* löscht das disabled design */
+    document.getElementById('next-button').classList.remove('button-hover'); /* fügt den hover effekt hinzu */
 }
 
 function updateCurrentQuestion() {
@@ -177,8 +188,10 @@ function resetAll() {
     currentQuestion = 0; /* setzt den wert wieder auf den anfangswert */
     score = 0; /* setzt den wert wieder auf den anfangswert */
     document.getElementById('questionFooter2').style.display = 'none'; /* der end screen button verschwindet wieder */
-    document.getElementById('img').src = "img/quiz.jpg"; /* ändert das bild wieder zurück */
-    document.getElementById('progress-bar').parentNode.classList.remove("hide"); /* zeigt die progress bar wieder an */
+    /* document.getElementById('img').src = "img/quiz.jpg"; */
+    /* ändert das bild wieder zurück */
+    /* document.getElementById('progress-bar').parentNode.classList.remove("hide"); */
+    /* zeigt die progress bar wieder an */
     document.getElementById('questionFooter').style = ''; /* Zeigt den unteren bereich wieder an */
     addAllAnswerClasses();
     let current_question = document.getElementById('current-question');

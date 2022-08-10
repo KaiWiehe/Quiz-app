@@ -6,99 +6,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
 
     <!-- Bootstrap -->
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+ -->
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
+    <!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+ -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
     <script src="database.js"></script>
     <script src="script.js"></script>
 </head>
 
 <body>
-    <nav class="navbar bg-drak height">
-        <div class="container-fluid" onclick="nextGame()">
-            <span class="navbar-brand mb-0 h1">Kai's Quizapp</span>
-        </div>
-    </nav>
-
-    <div id="category-container" class="container-categorys">
-        <div class="card quiz-card">
-            <img src="img/category.png" class="card-img-top">
-
-            <div class="card-body">
-                <h5 class="card-title">Fragebogen wählen:</h5>
-
-                <div class="card quiz-answer-card mb-2" onclick="initQuestion('bigBangTheory')">
-                    <div class="card-body">
+    <div class="container-categorys">
+        <!-- left -->
+        <div class="left">
+            <div onclick="nextGame()" class="flex flex-center flex-collum hover">
+                <img src="img/category.png">
+                <span class="margin10">Kai's Quiz</span>
+            </div>
+            <div>
+                <div class="category" onclick="changeCategory('bigBangTheory')">
+                    <div>
                         Big Bang Theorie
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2" onclick="initQuestion('rügen')">
-                    <div class="card-body">
+                <div class="category" onclick="changeCategory('rügen')">
+                    <div>
                         Rügen
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2" onclick="initQuestion('theMiddle')">
-                    <div class="card-body">
+                <div class="category" onclick="changeCategory('theMiddle')">
+                    <div>
                         The Middle
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
-
-    <div id="question-container" class="container hide">
-        <div class="card quiz-card">
-            <img id="img" src="img/quiz.jpg" class="card-img-top">
-
-            <div class="progress">
-                <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-
-            <div id="card-body" class="card-body">
-                <h5 id="question_titel" class="card-title">Frage:</h5>
-
-                <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
-                    <div class="card-body" id="answer_1">
+        <!-- Startscreen -->
+        <div id="category-container" class="right">
+            <h1 class="textcenter">Willkommen bei Kai's Quiz App</h1>
+            <h2 class="textcenter">Wähle eine Kategorie und stelle dich der Herausforderung</h2>
+        </div>
+        <!-- Questionscreen -->
+        <div id="question-container" class="hide right question-container flex flex-collum">
+            <h3 id="question_titel" class="textcenter">Frage:</h3>
+            <div class="question flex flex-collum">
+                <div class="question-Bg-White question-hover" onclick="answer('answer_1')">
+                    <div id="answer_1">
                         Antwort 1
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2" onclick="answer('answer_2')">
-                    <div class="card-body" id="answer_2">
+                <div class="question-Bg-White question-hover" onclick="answer('answer_2')">
+                    <div id="answer_2">
                         Antwort 2
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2" onclick="answer('answer_3')">
-                    <div class="card-body" id="answer_3">
+                <div class="question-Bg-White question-hover" onclick="answer('answer_3')">
+                    <div id="answer_3">
                         Antwort 3
                     </div>
                 </div>
 
-                <div class="card quiz-answer-card mb-2" onclick="answer('answer_4')">
-                    <div class="card-body" id="answer_4">
+                <div class="question-Bg-White question-hover" onclick="answer('answer_4')">
+                    <div id="answer_4">
                         Antwort 4
                     </div>
                 </div>
-
-                <div id="questionFooterEndScreen">
-                    <div id="questionFooter">
-                        <span id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
-                        <div>
-                            <button onclick="nextGame()" class="btn-primary btn">Andere Kategorie</button>
-                            <button onclick="nextQuestion()" id="next-button" class="btn-primary btn" disabled>Nächste Frage</button>
-                        </div>
+            </div>
+            <div>
+                <div class="question-footer" id="questionFooter">
+                    <span id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
+                    <div class="padding-left-25 flex">
+                        <button onclick="nextGame()" class="category-button button-hover myButton">Andere Kategorie</button>
+                        <button onclick="nextQuestion()" id="next-button" class="myButton disabled" disabled>Nächste Frage</button>
                     </div>
-                    <div id="questionFooter2" style="display: none">
-                        <button onclick="nextGame()" id="end-screen-button" class="btn-primary btn">Neues Spiel?</button>
-                    </div>
+                </div>
+                <div class="question-footer2" id="questionFooter2" style="display: none">
+                    <button onclick="nextGame()" id="end-screen-button" class="myButton button-end button-hover">Neues Spiel?</button>
                 </div>
             </div>
         </div>
