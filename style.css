@@ -180,7 +180,7 @@ body {
     height: 50px;
     font-size: 1.3rem;
     color: #ffffff;
-    background: linear-gradient(to top right, #2d61e3, #7a70ff);
+    background: linear-gradient(122deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 51%, rgba(0, 212, 255, 1) 100%);
     border-radius: 10px;
     transition: all 125ms ease;
     border: 0;
