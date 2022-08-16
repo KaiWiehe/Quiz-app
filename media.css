@@ -94,6 +94,7 @@
     }
     .right {
         width: 100%;
+        background-position: top;
     }
     .toggle_button {
         display: flex;
@@ -113,6 +114,10 @@
     }
     .category {
         font-size: 2.5rem;
+        border-bottom: 5px solid white;
+        padding-bottom: 30px;
+        margin: 0;
+        padding-top: 30px;
     }
     .category:hover {
         cursor: pointer;
@@ -126,18 +131,18 @@
     }
 }
 
-@media (max-width: 550px) {
-    .right h1 {
-        margin: 80px 110px 35px 110px;
-    }
-}
-
 @media (max-width: 570px) {
     .right h3 {
         font-size: 1.4rem;
     }
     .question-Bg-White {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 550px) {
+    .right h1 {
+        margin: 80px 110px 35px 110px;
     }
 }
 

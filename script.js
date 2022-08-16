@@ -11,7 +11,7 @@ function initQuestion(questionCategory) {
     filterCategory.push(category);
     showAmmountOfQuestions();
     showQuestion();
-    document.getElementById('question-container').style = `background: linear-gradient(rgba(255, 255, 255, 0.6), rgb(255, 255, 255)), url("${filterCategory[0][currentQuestion]['background']}");background-position: center;background-size: 100%;background-repeat: no-repeat;`;
+    document.getElementById('question-container').style = `background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.8)), url("${filterCategory[0][currentQuestion]['background']}");background-position: center;background-repeat: no-repeat;background-size: 100% 100%;`;
 }
 
 function changeCategory(questionCategory) {
