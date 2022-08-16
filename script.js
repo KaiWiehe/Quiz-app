@@ -211,9 +211,6 @@ function showAmmountOfQuestions() {
     question_lenght.innerHTML = filterCategory[0].length; /* Zeigt an wie viele Fragen es gibt */
 }
 
-function openMenu() {
-    document.getElementById('left').classList.add('show-left');
-    setTimeout(function() {
-        document.getElementById('left').classList.remove('show-left');
-    }, 3000);
+function closeMenu() {
+    document.getElementById('toggle_button').checked = false;
 }

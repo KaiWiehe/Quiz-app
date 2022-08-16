@@ -8,13 +8,6 @@
     <title>Quiz App</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
 
-    <!-- Bootstrap -->
-    <!-- CSS only -->
-    <!--     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
- -->
-    <!-- JavaScript Bundle with Popper -->
-    <!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
- -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="media.css">
     <link rel="stylesheet" href="fonts.css">
@@ -25,26 +18,31 @@
 <body>
     <div class="container-categorys">
         <!-- left -->
-        <img class="menu-icon" src="img/menu.png" onclick="openMenu()">
+        <input type="checkbox" id="toggle_button">
+        <label class="toggle_button" for="toggle_button">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </label>
         <div id="left" class="left">
-            <div onclick="nextGame()" class="flex flex-center flex-collum hover">
+            <div onclick="nextGame(), closeMenu()" class="flex flex-center flex-collum hover logo-media-design">
                 <img src="img/category.png">
                 <span class="header">Kai's Quiz</span>
             </div>
-            <div>
-                <div class="category" onclick="changeCategory('bigBangTheory')">
+            <div class="category-container">
+                <div class="category" onclick="changeCategory('bigBangTheory'), closeMenu()">
                     <div>
                         Big Bang Theorie
                     </div>
                 </div>
 
-                <div class="category" onclick="changeCategory('rügen')">
+                <div class="category" onclick="changeCategory('rügen'), closeMenu()">
                     <div>
                         Rügen
                     </div>
                 </div>
 
-                <div class="category" onclick="changeCategory('theMiddle')">
+                <div class="category" onclick="changeCategory('theMiddle'), closeMenu()">
                     <div>
                         The Middle
                     </div>
@@ -87,10 +85,10 @@
             </div>
             <div>
                 <div class="question-footer" id="questionFooter">
-                    <span id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
-                    <div class="padding-left-25 flex">
-                        <button onclick="nextGame()" class="category-button button-hover myButton">Andere Kategorie</button>
-                        <button onclick="nextQuestion()" id="next-button" class="myButton disabled" disabled>Nächste Frage</button>
+                    <span class="end-screen" id="end-screen"><b id="current-question">1</b> von <b id="question_lenght">5</b> Fragen</span>
+                    <div class="padding-left-25 flex button-design">
+                        <button onclick="nextGame(), closeMenu()" class="category-button button-hover myButton">Andere Kategorie</button>
+                        <button onclick="nextQuestion(), closeMenu()" id="next-button" class="myButton rightButton disabled" disabled>Nächste Frage</button>
                     </div>
                 </div>
                 <div class="question-footer2" id="questionFooter2" style="display: none">
