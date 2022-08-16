@@ -61,7 +61,7 @@ body {
 }
 
 .left {
-    background-color: rgb(97, 108, 189);
+    background: linear-gradient(122deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 51%, rgba(0, 212, 255, 1) 100%);
     border-radius: 15px 0 0 15px;
     height: 80vh;
     width: 250px;
