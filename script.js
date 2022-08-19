@@ -210,7 +210,26 @@ function showAmmountOfQuestions() {
     let question_lenght = document.getElementById('question_lenght');
     question_lenght.innerHTML = filterCategory[0].length; /* Zeigt an wie viele Fragen es gibt */
 }
-
+/* 
 function closeMenu() {
     document.getElementById('toggle_button').checked = false;
+} */
+
+
+/* ------------------------ */
+
+var UD_MENU_OPEN = false;
+
+function buttonAktive() {
+    if (UD_MENU_OPEN === false) {
+        UD_MENU_OPEN = true;
+        document.getElementById("ud_menu_icon").classList.add("is-active");
+        document.getElementById('left').style = "position: absolute; display: block;";
+    } else {
+        UD_MENU_OPEN = false;
+        document.getElementById("ud_menu_icon").classList.remove("is-active");
+        document.getElementById('left').style = "";
+    }
 }
+
+/* ------------------------ */

@@ -96,6 +96,10 @@
         width: 100%;
         background-position: top;
     }
+    .ud_menu_icon {
+        display: block;
+    }
+    /* 
     .toggle_button {
         display: flex;
         z-index: 999;
@@ -103,7 +107,7 @@
     #toggle_button:checked~.left {
         display: block;
         position: absolute;
-    }
+    } */
     .hover:hover {
         cursor: pointer;
         transform: scale(0.9);
