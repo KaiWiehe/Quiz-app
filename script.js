@@ -238,5 +238,14 @@ function buttonAktive() {
     }
 }
 
+function closeMenu() {
+    UD_MENU_OPEN = false
+    document.getElementById("ud_menu_icon").classList.remove("is-active");
+    document.getElementById('left').classList.remove('menuAnimationOpen');
+    document.getElementById('left').classList.add('menuAnimationClose');
+    setTimeout(function() {
+        document.getElementById('left').style = "";
+    }, 490);
+}
 
 /* ------------------------ */
