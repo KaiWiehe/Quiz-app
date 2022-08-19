@@ -85,12 +85,36 @@
 }
 
 @media (max-width: 750px) {
+    @keyframes menuAnimationOpen {
+        from {
+            transform: translateY(-1000px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+    @keyframes menuAnimationClose {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-1000px);
+        }
+    }
+    .menuAnimationOpen {
+        animation: menuAnimationOpen 500ms;
+    }
+    .menuAnimationClose {
+        animation: menuAnimationClose 500ms;
+    }
     .container-categorys {
         flex-direction: column;
     }
     .left {
         display: none;
         width: 100%;
+        /* transform: translateY(-1000px); */
+        transition: all 225ms;
     }
     .right {
         width: 100%;

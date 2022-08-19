@@ -224,12 +224,19 @@ function buttonAktive() {
     if (UD_MENU_OPEN === false) {
         UD_MENU_OPEN = true;
         document.getElementById("ud_menu_icon").classList.add("is-active");
-        document.getElementById('left').style = "position: absolute; display: block;";
+        document.getElementById('left').style = "position: absolute;display: block;";
+        document.getElementById('left').classList.remove('menuAnimationClose');
+        document.getElementById('left').classList.add('menuAnimationOpen');
     } else {
         UD_MENU_OPEN = false;
         document.getElementById("ud_menu_icon").classList.remove("is-active");
-        document.getElementById('left').style = "";
+        document.getElementById('left').classList.remove('menuAnimationOpen');
+        document.getElementById('left').classList.add('menuAnimationClose');
+        setTimeout(function() {
+            document.getElementById('left').style = "";
+        }, 490);
     }
 }
+
 
 /* ------------------------ */
